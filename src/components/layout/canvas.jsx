@@ -26,8 +26,11 @@ const LCanvas = ({ children }) => {
         top: 0,
       }}
       onCreated={(state) => state.events.connect(dom.current)}
+      linear
+      orthographic
+      gl={{ antialias: false, stencil: false, alpha: false, depth: false }}
+      camera={{ zoom: 5, position: [0, 0, 200], far: 300, near: 0 }}
     >
-      <LControl />
       <Preload all />
       {children}
     </Canvas>

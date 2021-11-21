@@ -18,6 +18,7 @@ const Header = ({ title = titleDefault }) => {
         <meta name='designer' content={author} />
         <meta name='publisher' content={author} />
 
+
         {/* Search Engine Optimization Meta Tags */}
         <title>{title}</title>
         <meta name='description' content={description} />
@@ -77,6 +78,19 @@ const Header = ({ title = titleDefault }) => {
         Be sure validate your Twitter card markup on the documentation site. */}
         <meta name='twitter:card' content='summary' />
         <meta name='twitter:site' content='@onirenaud' />
+        <link 
+          href="/nprogress.css"
+          type="text/css"
+          rel="stylesheet"
+        />
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Shippori+Antique&display=swap" 
+          rel="stylesheet"
+        />
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" 
+          rel="stylesheet"
+        />
       </Head>
     </>
   )

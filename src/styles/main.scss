@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html,
+  body,
+  #__next {
+    font-family: 'Shippori Antique', sans-serif;
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: black;
+  }
+}
+
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.body_loading {
+  display: flex;
+  opacity: 1;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background: hsl(177, 89%, 60%);
+  transition: all 650ms ease;
+}
+
+.none {
+  opacity: 0;
+}
+
+.lds_ellipsis {
+  display: inline-block;
+  position: relative;
+  height: 80px;
+  width: 80px;
+
+  & div {
+    position: absolute;
+    top: 33px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: hsl(301, 93%, 60%);
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+
+    &:nth-child(1) {
+      left: 8px;
+      animation: lds_ellipsis1 0.6s infinite;
+    }
+    &:nth-child(2) {
+      left: 8px;
+      animation: lds_ellipsis2 0.6s infinite;
+    }
+    &:nth-child(3) {
+      left: 32px;
+      animation: lds_ellipsis2 0.6s infinite;
+    }
+    &:nth-child(4) {
+      left: 56px;
+      animation: lds_ellipsis3 0.6s infinite;
+    }
+  }
+}
+
+@keyframes lds_ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds_ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds_ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+.header {
+  margin-left: 5em;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  color: hsl(177, 89%, 60%);
+
+  &--subheading {
+    font-size: calc(0.25rem + 1.25vw);
+    align-self: flex-end;
+    color: hsl(301, 93%, 60%);
+  }
+
+  &--title {
+    font-size: calc(2rem + 1.4vw);
+  }
+
+  &--cta {
+    color: hsl(301, 93%, 60%);
+    width: 19%;
+    pointer-events: auto;
+    font-size: calc(0.5rem + 1.25vw);
+    position: relative;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 270ms cubic-bezier(0.19, 1, 0.22, 1);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10%;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: hsl(301, 93%, 60%);
+      transition: all 270ms cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    &:hover {
+      letter-spacing: 0;
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
