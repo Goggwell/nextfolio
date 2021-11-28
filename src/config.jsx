@@ -88,8 +88,20 @@ const Header = ({ title = titleDefault }) => {
           rel="stylesheet"
         />
         <link 
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" 
+          href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap" 
           rel="stylesheet"
+        />
+        <link 
+          rel="preload"
+          href="/fonts/Stolzl/Stolzl-Regular.woff"
+          as="font"
+          crossOrigin=""
+        />
+        <link 
+          rel="preload"
+          href="/fonts/Stolzl/Stolzl-Bold.woff"
+          as="font"
+          crossOrigin=""
         />
       </Head>
     </>

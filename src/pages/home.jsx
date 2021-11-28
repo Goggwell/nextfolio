@@ -33,7 +33,7 @@ const R3F = () => {
   return <></>
 }
 
-const Page = ({ isComponent = false }) => {
+const Page = () => {
   const [Loading, setLoading] = useState(true)
   const controls = useAnimation()
   const variants = {
@@ -58,48 +58,6 @@ const Page = ({ isComponent = false }) => {
       },
     },
   }
-  const itemLeft = {
-    hidden: { opacity: 0, x: '-100%' },
-    enter: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      transition: {
-        staggerChildren: 0.5,
-        ease: 'easeInOut',
-        duration: 2,
-      },
-    },
-    exit: { opacity: 0, x: '-100%' },
-  }
-  const itemRight = {
-    hidden: { opacity: 0, x: '100%' },
-    enter: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      transition: {
-        staggerChildren: 0.5,
-        ease: 'easeInOut',
-        duration: 2,
-      },
-    },
-    exit: { opacity: 0, x: '100%' },
-  }
-  const itemBottom = {
-    hidden: { opacity: 0, y: 200, x: '-50%' },
-    enter: {
-      opacity: 1,
-      x: '-50%',
-      y: 0,
-      transition: {
-        staggerChildren: 0.5,
-        ease: 'easeInOut',
-        duration: 2,
-      },
-    },
-    exit: { opacity: 0, y: 200, x: '-50%' },
-  }
 
   useEffect(() => {
     if (!Loading) {
@@ -114,11 +72,9 @@ const Page = ({ isComponent = false }) => {
 
   return (
     <>
-      {isComponent ? null : (
-        <AnimatePresence exitBeforeEnter initial={false}>
-          {Loading ? <Loader /> : null}
-        </AnimatePresence>
-      )}
+      <AnimatePresence exitBeforeEnter>
+        {Loading ? <Loader /> : null}
+      </AnimatePresence>
       <motion.div
         variants={variants}
         initial='hidden'

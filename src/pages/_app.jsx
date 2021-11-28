@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router'
 import useStore from '@/helpers/store'
-import { useState, useEffect, Children } from 'react'
+import { Children } from 'react'
 import Header from '@/config'
 import dynamic from 'next/dynamic'
 import Dom from '@/components/layout/dom'
-import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 
 import '@/styles/main.scss'
 
@@ -49,31 +49,15 @@ const ForwardPropsToR3fComponent = ({ comp, pageProps }) => {
 
 function App({ Component, pageProps = { title: 'index' } }) {
   const router = useRouter()
-  const [loading, setLoading] = useState(false)
-  useEffect(() => {
-    useStore.setState({ router })
-
-    const handleStart = (url) => {
-      url !== router.pathname ? setLoading(true) : setLoading(false)
-    }
-    const handleComplete = (url) => setLoading(false)
-
-    router.events.on('routeChangeStart', handleStart)
-    router.events.on('routeChangeError', handleComplete)
-    router.events.on('routeChangeComplete', handleComplete)
-  }, [router])
   return (
-    <AnimateSharedLayout type='crossfade'>
-      <AnimatePresence exitBeforeEnter>
-        {/* <Loader loading={loading} key={loading} /> */}
-        <Header title={pageProps.title} />
-        <ForwardPropsToR3fComponent
-          comp={Component}
-          pageProps={pageProps}
-          key={router.route}
-        />
-      </AnimatePresence>
-    </AnimateSharedLayout>
+    <AnimatePresence exitBeforeEnter>
+      <Header title={pageProps.title} />
+      <ForwardPropsToR3fComponent
+        comp={Component}
+        pageProps={pageProps}
+        key={router.route}
+      />
+    </AnimatePresence>
   )
 }
 

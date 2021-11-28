@@ -4,14 +4,14 @@ import { motion } from 'framer-motion'
 export default function Landing() {
   const line1 = "samuel yusuf."
   const line2 = "enter"
-  const line3 = "こんにちは"
+  const line3 = "シンセウェーブ"
 
   let easing = [0.6, -0.05, 0.01, 0.99]
 
   const stagger = {
     animate: {
       transition: {
-        delay: 0.5,
+        delay: 1.5,
         staggerChildren: 0.05
       }
     }

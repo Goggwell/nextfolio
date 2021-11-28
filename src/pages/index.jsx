@@ -50,7 +50,7 @@ const R3F = () => {
   )
 }
 
-const Page = ({ isComponent = false }) => {
+const Page = () => {
   const [Loading, setLoading] = useState(true)
 
   const variants = {
@@ -125,28 +125,23 @@ const Page = ({ isComponent = false }) => {
     } else {
       setTimeout(() => {
         setLoading(false)
-      }, 3000)
+      }, 5000)
       controls.start('hidden')
     }
   }, [Loading, controls])
 
   return (
     <>
-      {isComponent ? null : (
-        <AnimatePresence exitBeforeEnter initial={false}>
-          {Loading ? <Loader /> : null}
-        </AnimatePresence>
-      )}
+      <AnimatePresence exitBeforeEnter>
+        {Loading ? <Loader /> : null}
+      </AnimatePresence>
+
       <R3F r3f />
-      <motion.div
-        variants={variants}
-        initial='hidden'
-        animate={controls}
-        exit='exit'
+      <div
         className='w-full opacity-1 transition duration-2000'
       >
         <DOM />
-      </motion.div>
+      </div>
     </>
   )
 }
